@@ -1,0 +1,26 @@
+
+# dircolors
+eval "$(dircolors ~/.config/zsh/.dircolors)"
+# starship
+eval "$(starship init zsh)"
+
+[ -f "$HOME/.config/zsh/plugins.zsh" ] && source "$HOME/.config/zsh/plugins.zsh"
+
+[ -f "$HOME/.config/zsh/aliases.zsh" ] && source "$HOME/.config/zsh/aliases.zsh"
+
+[ -f "$HOME/.config/zsh/exports.zsh" ] && source "$HOME/.config/zsh/exports.zsh"
+
+# Automatically start tmux if not already inside a tmux session
+#if [[ -z "$TMUX" ]] && command -v tmux >/dev/null 2>&1; then
+#    tmux attach-session -t 0 || tmux new-session
+#fi
+
+# Automatically start tmux if not already inside a tmux session, but only on initial shell startup
+if [[ -z "$TMUX" && -o login ]] && command -v tmux >/dev/null 2>&1; then
+    tmux attach-session -t 0 || tmux new-session
+    # Exit the shell after tmux exits
+    exit
+fi
+
+
+

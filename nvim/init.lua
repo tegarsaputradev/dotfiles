@@ -1,0 +1,33 @@
+require("core.options")
+require("core.keymaps")
+
+-- Set up the Lazy plugin manager
+local lazypath = vim.fn.expand("~/Documents/github/lazy.nvim")
+
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  error(
+    "Local lazy.nvim directory not found at "
+      .. lazypath
+      .. ". Please ensure the path is correct and the directory exists."
+  )
+end
+
+-- Add lazy.nvim to the runtime path
+vim.opt.rtp:prepend(lazypath)
+
+require("lazy").setup({
+  require("plugins.neotree"),
+  require("plugins.colorscheme"),
+  -- require("plugins.bufferline"),
+  require("plugins.lualine"),
+  require("plugins.treesitter"),
+  require("plugins.telescope"),
+  require("plugins.gitsigns"),
+  require("plugins.indet-blankline"),
+  require("plugins.coment"),
+  require("plugins.msc"),
+
+  require("plugins.lsp"),
+  require("plugins.formatter"),
+  require("plugins.autotag"),
+})

@@ -11,14 +11,11 @@ local opts = { noremap = true, silent = true }
 -- quit file
 vim.keymap.set("n", "<C-q>", "<cmd> q <CR>", opts)
 
--- delete single character without copying into register
--- vim.keymap.set("n", "x", '"_x', opts)
-
 -- Buffers
 vim.keymap.set("n", "<Tab>", ":bnext<CR>", opts)
 vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", opts)
 vim.keymap.set("n", "<leader>x", ":bdelete!<CR>", opts) -- close buffer
-vim.keymap.set("n", "<leader>X", ":%bd<CR>", opts) -- Close all buffers
+vim.keymap.set("n", "<leader>X", ":bufdo if &modified == 0 | bd | endif<CR>", opts)
 
 -- Navigate between splits
 vim.keymap.set("n", "<C-k>", ":wincmd k<CR>", opts)

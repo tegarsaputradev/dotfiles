@@ -37,6 +37,16 @@ return {
       cond = hide_in_width,
     }
 
+    local function unsaved_count()
+      local count = 0
+      for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+        if vim.api.nvim_buf_get_option(buf, "modified") then
+          count = count + 1
+        end
+      end
+      return count > 0 and "✗ " .. count or ""
+    end
+
     require("lualine").setup({
       options = {
         icons_enabled = true,
@@ -50,7 +60,7 @@ return {
         always_divide_middle = true,
       },
       sections = {
-        lualine_a = { mode },
+        lualine_a = { unsaved_count, mode },
         lualine_b = { "branch" },
         lualine_c = { filename },
         lualine_x = { diagnostics, diff, { "encoding", cond = hide_in_width }, { "filetype", cond = hide_in_width } },
@@ -58,7 +68,7 @@ return {
         lualine_z = { "progress" },
       },
       inactive_sections = {
-        lualine_a = {},
+        lualine_a = { unsaved_count },
         lualine_b = {},
         lualine_c = { { "filename", path = 1 } },
         lualine_x = { { "location", padding = 0 } },

@@ -1,3 +1,14 @@
+-- FOLD
+vim.opt.foldcolumn = "1"
+vim.opt.foldmethod = "indent"
+vim.opt.foldenable = true -- Enable folding by default
+vim.opt.foldlevel = 99 -- Start with all folds open (adjust as needed)
+
+-- Remap keys for folding
+vim.api.nvim_set_keymap("n", "-", "zc", { noremap = true, silent = true }) -- Close fold
+vim.api.nvim_set_keymap("n", "=", "zo", { noremap = true, silent = true }) -- Open fold
+-- End FOLD
+
 vim.opt.showtabline = 0
 vim.wo.number = true -- Make line numbers default (default: false)
 vim.o.relativenumber = true -- Set relative numbered lines (default: false)

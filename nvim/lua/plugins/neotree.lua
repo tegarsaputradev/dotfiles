@@ -143,7 +143,7 @@ return {
           },
           mappings = {
             ["<space>"] = "toggle_node",
-            ["<LeftMouse>"] = "open",
+            ["<2-LeftMouse>"] = "open",
             ["<cr>"] = "open",
             ["l"] = "open",
             ["<esc>"] = "cancel",

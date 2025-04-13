@@ -1,6 +1,4 @@
 return {
-
-  -- Your other plugins like vim-fugitive, vim-tmux-navigator, etc.
   {
     "tpope/vim-fugitive",
     cmd = "Git",
@@ -11,13 +9,5 @@ return {
 
   {
     "christoomey/vim-tmux-navigator",
-  },
-
-  {
-    "windwp/nvim-autopairs",
-    event = "InsertEnter", -- Load the plugin when entering insert mode
-    config = function()
-      -- custom here
-    end,
   },
 }

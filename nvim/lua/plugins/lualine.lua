@@ -47,6 +47,10 @@ return {
       return count > 0 and "✗ " .. count or ""
     end
 
+    local function recording_status()
+      return vim.fn.reg_recording() ~= "" and "Recording @" .. vim.fn.reg_recording() or ""
+    end
+
     require("lualine").setup({
       options = {
         icons_enabled = true,
@@ -63,7 +67,14 @@ return {
         lualine_a = { unsaved_count, mode },
         lualine_b = { "branch" },
         lualine_c = { filename },
-        lualine_x = { diagnostics, diff, { "encoding", cond = hide_in_width }, { "filetype", cond = hide_in_width } },
+        lualine_x = {
+          diagnostics,
+          diff,
+          recording_status,
+          { "encoding", cond = hide_in_width },
+          { "filetype", cond = hide_in_width },
+        },
+        --[[ lualine_x = { diagnostics, diff, { "encoding", cond = hide_in_width }, { "filetype", cond = hide_in_width } }, ]]
         lualine_y = { "location" },
         lualine_z = { "progress" },
       },

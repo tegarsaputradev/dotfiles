@@ -17,15 +17,19 @@ $cmd_duration\
 $line_break\
 $character"""
 
-add_newline = false
+add_newline = true
 palette = "nord"
+
+[character]
+format = "$symbol "
+
 
 [directory]
 style = 'bold fg:dark_blue'
 format = '[$path ]($style)'
-truncation_length = 3
-truncation_symbol = '…/'
-truncate_to_repo = false
+# truncation_length = 3
+# truncation_symbol = '…/'
+# truncate_to_repo = false
 
 [directory.substitutions]
 'Documents' = '󰈙 '

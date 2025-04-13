@@ -10,13 +10,13 @@ config = {
   automatically_reload_config = true,
   window_close_confirmation = "NeverPrompt",
   adjust_window_size_when_changing_font_size = false,
-  window_decorations = "NONE",
+  window_decorations = "RESIZE",
   color_scheme = "Nord (Gogh)",
   check_for_updates = false,
   use_fancy_tab_bar = false,
   tab_bar_at_bottom = false,
-  font_size = 10.5,
-  font = wezterm.font("JetBrains Mono", { weight = "Bold" }),
+  font_size = 11.5,
+  font = wezterm.font("JetBrains Mono", { weight = "Medium" }),
   enable_tab_bar = false,
   enable_kitty_graphics = true,
 
@@ -47,12 +47,12 @@ config = {
       },
       width = "100%",
       height = "100%",
-      opacity = 0.55,
+      opacity = 0.9,
     },
   },
 
-  initial_cols = 218,
-  initial_rows = 48,
+  initial_cols = 205,
+  initial_rows = 45,
   -- from: https://akos.ma/blog/adopting-wezterm/
   hyperlink_rules = {
     -- Matches: a URL in parens: (URL)
@@ -95,5 +95,18 @@ config = {
       format = "mailto:$0",
     },
   },
+  -- Add this to override the text color
+  colors = {
+    foreground = "#18c904", -- Custom text color (light gray from Nord palette)
+    -- You can also override other colors if desired:
+    -- background = "#2E3440", -- Example: override background
+    -- cursor_fg = "#FFFFFF",  -- Cursor foreground
+    -- cursor_bg = "#88C0D0",  -- Cursor background
+  },
 }
+
+wezterm.on("format-window-title", function(tab, pane, tabs, panes, config)
+  return "" -- No title at all
+end)
+
 return config

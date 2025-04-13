@@ -20,16 +20,16 @@ return {
         max_name_length = 30,
         max_prefix_length = 30, -- prefix used when a buffer is de-duplicated
         tab_size = 21,
-        diagnostics = false,
         diagnostics_update_in_insert = false,
+        diagnostics = "nvim_lsp",
         color_icons = true,
         show_buffer_icons = true,
         show_buffer_close_icons = true,
         show_close_icon = true,
-        persist_buffer_sort = true, -- whether or not custom sorted buffers should persist
+        persist_buffer_sort = false, -- whether or not custom sorted buffers should persist
         separator_style = { "│", "│" }, -- | "thick" | "thin" | { 'any', 'any' },
         enforce_regular_tabs = true,
-        always_show_bufferline = true,
+        always_show_bufferline = false,
         show_tab_indicators = false,
         indicator = {
           -- icon = '▎', -- this should be omitted if indicator style is not 'icon'
@@ -40,6 +40,14 @@ return {
         maximum_padding = 5,
         maximum_length = 15,
         sort_by = "insert_at_end",
+        offsets = {
+          {
+            filetype = "neo-tree", -- Matches the filetype of Neo-tree
+            text = "", -- Text to display above the Neo-tree sidebar
+            text_align = "left", -- Alignment of the text: "left", "center", or "right"
+            separator = true, -- Adds a separator line (optional, can be set to a custom character)
+          },
+        },
       },
       highlights = {
         separator = {
